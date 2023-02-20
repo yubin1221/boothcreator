@@ -1,0 +1,31 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'bootstrap.min.css' %}">
+<h2>{{ sub_category }} list of {{ category }}</h2>
+{% if included_list %}
+    <ul>
+    {% for included in included_list %}
+        <div class = "form-inline form-group">
+            <li><a href="{{ included.device.id }}">{{ included.device.id }}</a></li>
+        </div>
+    {% endfor %}
+    </ul>
+    {% else %}
+    <p>There is no {{ sub_category }} in {{ category }}</p>
+
+{% endif %}
+<form method = "POST">
+        <div class = "form-inline form-group">
+            <label> new device id : </label><label>
+            <input name="id" type="text">
+                                <input type="submit" value = "Add">
+        </label>
+        </div>
+</form>
+<h2> ALL {{ sub_category }} List</h2>
+{% if sub_list %}
+    <ul>
+    {% for item in sub_list %}
+      <li><a href='/api/v1/{{ sub_category }}/{{ item.id }}'>{{ item.id }}</a></li>
+    {% endfor %}
+    </ul>
+{% endif %}
