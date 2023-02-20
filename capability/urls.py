@@ -15,7 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-
+from capability import views
 urlpatterns = [
-  #  path('',)
+    path('', views.capabilityList),
+    path('<capability_id>/', views.capabilityInfo),
+    path('<capability_id>/data/', views.capability_data),
+    path('<capability_id>/data/<data_id>/', views.capability_data_del)
 ]
