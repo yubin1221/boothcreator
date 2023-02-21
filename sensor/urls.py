@@ -19,5 +19,5 @@ from sensor import views
 urlpatterns = [
     path('', views.sensorList),
     path('<sensor_id>/', views.sensorInfo),
-    path('<sensor_id>/capability', views.sensor_capability)
+    path('<sensor_id>/capability/', views.sensor_capability)
 ]

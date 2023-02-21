@@ -20,7 +20,10 @@ from device import views
 urlpatterns = [
     path('', views.deviceList),
     path('<device_id>/', views.deviceInfo),
-    path('<device_id>/sensor',views.device_sensor),
-    path('<device_id>/attribute',views.device_attribute),
-    path('<device_id>/connection',views.device_connection)
+    path('<device_id>/sensor/',views.device_sensor),
+    path('<device_id>/attribute/',views.device_attribute),
+    path('<device_id>/connection/',views.device_connection),
+    path('<device_id>/sensor/<sensor_id>/',views.device_sensor_del),
+    path('<device_id>/attribute/<attribute_id>/',views.device_attribute_del),
+    path('<device_id>/connection/<connection_id>/',views.device_connection_del)
 ]

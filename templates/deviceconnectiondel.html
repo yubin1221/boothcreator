@@ -3,21 +3,43 @@
 <div class="form-inline form-group">
     <label>id : {{ element.id }}</label>
 </div>
-<div class="form-inline form-group">
-    <label>name : </label><label>
-    {{ element.name }}
-</label>
-</div>
-<div class="form-inline form-group">
-    <label>version : </label><label>
-    {{ element.version }}
-</label>
-    <div class="form-inline form-group">
-        <label>version : </label><label>
-        {{ element.vendor }}
+ <div class = "form-inline form-group">
+        <label>key: </label><label>
+     {{ element.key }}
     </label>
     </div>
+    <div class = "form-inline form-group">
+        <label>super_permission : </label><label>
+        {{ element.super_permission }}
+    </label>
+    </div>
+
+    <div class = "form-inline form-group">
+        <label>user_permission : </label>
+        <label>
+            {{ element.user_permission }}
+        </label>
+    </div>
+    <div class = "form-inline form-group">
+        <label>is_object : </label>
+        <label>
+            {{ element.is_object }}
+        </label>
+    </div>
+    <div class = "form-inline form-group">
+        <label>is_array : </label>
+        <label>
+            {{ element.is_array }}
+        </label>
+    </div>
+    <div class = "form-inline form-group">
+        <label>is_object_array : </label>
+        <label>
+            {{ element.is_object_array }}
+        </label>
+    </div>
 </div>
+
 <div class="form-inline form-group">
     <label> created_at : {{ element.created_at }} </label>
 </div>

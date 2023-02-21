@@ -77,3 +77,15 @@ def sensor_capability(request, sensor_id):
             return redirect('./')
         return redirect('./')
 
+
+@csrf_exempt
+def sensor_capability_del(request, sensor_id, capability_id):
+    if request.method == 'GET':
+        capability=Capability.objects.filter(id=capability_id).get()
+        context={'element': capability}
+        return render(request, 'sensorcapabilitydel.html', context)
+    if request.method == 'DELETE':
+        sensor = Sensor.objects.filter(id=sensor_id).get()
+        capability = Capability.objects.filter(id=capability_id).get()
+        Sensor_Capability.objects.filter(sensor=sensor, capability=capability).delete()
+        return redirect('../')

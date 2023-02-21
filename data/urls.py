@@ -15,7 +15,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-
+from data import views
 urlpatterns = [
-   # path('',)
+    path('', views.dataList),
+    path('<data_id>/', views.dataInfo),
 ]

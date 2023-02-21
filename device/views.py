@@ -114,3 +114,38 @@ def device_connection(request, device_id):
             Device_Connection.objects.create(device=device, connection=connection).save()
             return redirect('./')
         return redirect('./')
+
+@csrf_exempt
+def device_sensor_del(request, device_id, sensor_id):
+    if request.method == 'GET':
+        sensor=Sensor.objects.filter(id=sensor_id).get()
+        context={'element': sensor}
+        return render(request, 'devicesensordel.html', context)
+    if request.method == 'DELETE':
+        device = Device.objects.filter(id=device_id).get()
+        sensor = Sensor.objects.filter(id=sensor_id).get()
+        Device_Sensor.objects.filter(device=device, sensor=sensor).delete()
+        return redirect('../')
+
+@csrf_exempt
+def device_attribute_del(request, device_id, attribute_id):
+    if request.method == 'GET':
+        attribute=Attribute.objects.filter(id=attribute_id).get()
+        context={'element': attribute}
+        return render(request, 'deviceattributedel.html', context)
+    if request.method == 'DELETE':
+        device = Device.objects.filter(id=device_id).get()
+        attribute = Attribute.objects.filter(id=attribute_id).get()
+        Device_Attribute.objects.filter(device=device, attribute=attribute).delete()
+        return redirect('../')
+@csrf_exempt
+def device_connection_del(request, device_id, connection_id):
+    if request.method == 'GET':
+        connection=Connection.objects.filter(id=connection_id).get()
+        context={'element': connection}
+        return render(request, 'deviceconnectiondel.html', context)
+    if request.method == 'DELETE':
+        device = Device.objects.filter(id=device_id).get()
+        connection = Connection.objects.filter(id=connection_id).get()
+        Device_Connection.objects.filter(device=device, connection=connection).delete()
+        return redirect('../')

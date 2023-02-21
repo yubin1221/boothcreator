@@ -16,6 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from attribute import views
 urlpatterns = [
-  #  path('',)
+    path('', views.attributeList),
+    path('<attribute_id>/', views.attributeInfo),
+    path('<attribute_id>/data/', views.attribute_data),
+    path('<attribute_id>/data/<data_id>/', views.attribute_data_del)
 ]

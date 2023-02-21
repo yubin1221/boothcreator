@@ -1,11 +1,11 @@
 {% load static %}
 <link rel="stylesheet" type="text/css" href="{% static 'bootstrap.min.css' %}">
-<h2>Device_Connection List</h2>
+<h2>Capability_Data List</h2>
 {% if included_list %}
     <ul>
     {% for included in included_list %}
         <div class = "form-inline form-group">
-            <li><a href="{{ included.connection.id }}">{{ included.connection.id }}</a></li>
+            <li><a href="{{ included.data.id }}">{{ included.data.id }}</a></li>
         </div>
     {% endfor %}
     </ul>
@@ -15,7 +15,7 @@
 {% endif %}
 <form method = "POST">
         <div class = "form-inline form-group">
-            <label> new connection id : </label><label>
+            <label> new data id : </label><label>
             <input name="id" type="text">
             <input type="submit" value = "Add">
         </label>

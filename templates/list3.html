@@ -1,0 +1,115 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'bootstrap.min.css' %}">
+{% if list %}
+  <ul>
+  {% for item in list %}
+  <li><a href="{{ item.id }}/">id : {{ item.id }} key : {{ item.name }}</a></li>
+  {% endfor %}
+  </ul>
+{% else %}
+  <p>{{category}}가 없습니다.</p>
+{% endif %}
+<form method = "POST">
+    <div class = "form-inline form-group">
+        <label>{{ category }} Create</label>
+    </div>
+
+    <div class = "form-inline form-group">
+        <label>name: </label><label>
+        <input name="name" type="text"  >
+    </label>
+    </div>
+    <div class = "form-inline form-group">
+        <label>primitive(integer, string, boolean, number) : </label><label>
+        <input name="primitive" type="text"  >
+    </label>
+    </div>
+
+    <div class = "form-inline form-group">
+        <label>label_ko : </label>
+        <label>
+            <input name="label_ko" type="text"  >
+        </label>
+    </div>
+    <div class = "form-inline form-group">
+        <label>label_en : </label>
+        <label>
+            <input name="label_en" type="text">
+        </label>
+    </div>
+    <div class = "form-inline form-group">
+        <label>is_category : </label>
+        <label>
+            <input name="array[]" type="checkbox" value="category" >
+        </label>
+    </div>
+    
+    <div class = "form-inline form-group">
+        <label>has_length_limit : </label>
+        <label>
+            <input name="array[]" type="checkbox" value="length" >
+        </label>
+    </div>
+    <div class = "form-inline form-group">
+        <label>has_range_limit : </label>
+        <label>
+            <input name="array[]" type="checkbox" value="range" >
+        </label>
+    </div>
+    <div class = "form-inline form-group">
+        <label>default_value : </label>
+        <label>
+            <input name="default_value" type="text">
+        </label>
+    </div>
+    <div class = "form-inline form-group">
+        <label>unit_of_value : </label>
+        <label>
+            <input name="unit_of_value" type="text">
+        </label>
+    </div>
+        <div class = "form-inline form-group">
+    <label>min_length : </label>
+        <label>
+            <input name="min_length" type="number">
+        </label>
+    </div>
+    <div class = "form-inline form-group">
+        <label>max_length : </label>
+        <label>
+            <input name="max_length" type="number">
+        </label>
+    </div>
+    <div class = "form-inline form-group">
+        <label>format : </label>
+        <label>
+            <input name="format" type="text">
+        </label>
+    </div>
+    <div class = "form-inline form-group">
+        <label>pattern : </label>
+        <label>
+            <input name="pattern" type="text">
+        </label>
+    </div>
+    <div class = "form-inline form-group">
+        <label>minimum : </label>
+        <label>
+            <input name="minimum" type="number">
+        </label>
+    </div>
+        <div class = "form-inline form-group">
+        <label>maximum : </label>
+        <label>
+            <input name="maximum" type="number">
+        </label>
+    </div>
+    <div class = "form-inline form-group">
+    <label>multiple_of : </label>
+        <label>
+            <input name="multiple_of" type="number">
+        </label>
+    </div>
+
+    <input type="submit" value = "create">
+</form>
