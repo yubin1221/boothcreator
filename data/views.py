@@ -20,8 +20,6 @@ def dataList(request):
         checkbox_array=request.POST.getlist('array[]')
         Data.objects.create(id=uuid.uuid4(), name=request.POST['name'], 
                             primitive=request.POST['primitive'],
-                            label_ko=request.POST['label_ko'],
-                            label_en=request.POST['label_en'],
                             default_value=request.POST['default_value'],
                             unit_of_value=request.POST['unit_of_value'],
                             min_length=request.POST['min_length'],
@@ -58,14 +56,7 @@ def dataInfo(request, data_id):
             new_primitive = data.primitive
         else:
             new_primitive = request.POST['primitive']
-        if request.POST['label_ko'] == '':
-            new_label_ko = data.label_ko
-        else:
-            new_label_ko = request.POST['label_ko']
-        if request.POST['label_en'] == '':
-            new_label_en = data.label_en
-        else:
-            new_label_en = request.POST['label_en']
+
         if request.POST['default_value'] == '':
             new_default_value = data.default_value
         else:
@@ -107,8 +98,6 @@ def dataInfo(request, data_id):
         Data.objects.filter(id=data_id).update(
             name=new_name,
             primitive=new_primitive,
-            label_ko=new_label_ko,
-            label_en=new_label_en,
             default_value=new_default_value,
             unit_of_value=new_unit_of_value,
             min_length=new_min_length,

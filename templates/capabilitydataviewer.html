@@ -1,6 +1,6 @@
 {% load static %}
 <link rel="stylesheet" type="text/css" href="{% static 'bootstrap.min.css' %}">
-<h2>Capability_Data List</h2>
+<h2>{{ category }}_data List</h2>
 {% if included_list %}
     <ul>
     {% for included in included_list %}

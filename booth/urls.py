@@ -20,6 +20,7 @@ from booth import views
 urlpatterns = [
     path('', views.boothList),
     path('<booth_id>/',views.boothInfo),
+    path('<booth_id>/json/',views.booth_json),
     path('<booth_id>/device/', views.booth_device),
     path('<booth_id>/device/<device_id>/',views.booth_device_del)
 ]

@@ -1,9 +1,13 @@
+import uuid
+
 from django.db import models
 
 # Create your models here.
 class Attribute(models.Model):
-    id = models.CharField(max_length=36, primary_key=True)
+    id = models.CharField(max_length=36, primary_key=True, default=uuid.uuid4())
     key = models.CharField(max_length=50)
+    label_ko = models.CharField(max_length=50)
+    label_en = models.CharField(max_length=50)
     super_permission = models.IntegerField()
     user_permission = models.IntegerField()
     is_object = models.BooleanField()
@@ -14,5 +18,5 @@ class Attribute(models.Model):
 
 
 class Attribute_Data(models.Model):
-    models.ForeignKey(Attribute, on_delete=models.CASCADE)
-    models.ForeignKey('data.Data', on_delete=models.CASCADE)
+    attribute=models.ForeignKey(Attribute, on_delete=models.CASCADE)
+    data=models.ForeignKey('data.Data', on_delete=models.CASCADE)

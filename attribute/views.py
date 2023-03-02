@@ -16,7 +16,9 @@ def attributeList(request):
         return render(request, 'list2.html', context)
     if request.method == 'POST':
         checkbox_array=request.POST.getlist('array[]')
-        Attribute.objects.create(id=uuid.uuid4(), key=request.POST['key'], 
+        Attribute.objects.create(id=uuid.uuid4(), key=request.POST['key'],
+                                 label_ko=request.POST['label_ko'],
+                                 label_en=request.POST['label_en'],
                                   super_permission=request.POST['super_permission'],
                                   user_permission=request.POST['user_permission'],
                                   is_object= "obj" in checkbox_array,
@@ -51,9 +53,19 @@ def attributeInfo(request, attribute_id):
             new_user_permission = attribute.user_permission
         else:
             new_user_permission = request.POST['user_permission']
+        if request.POST['label_ko'] == '':
+            new_label_ko = attribute.label_ko
+        else:
+            new_label_ko = request.POST['label_ko']
+        if request.POST['label_en'] == '':
+            new_label_en = attribute.label_en
+        else:
+            new_label_en = request.POST['label_en']
         checkbox_array=request.POST.getlist('array[]')
         Attribute.objects.filter(id=attribute_id).update(
             key=new_key, super_permission=new_super_permission, user_permission=new_user_permission,
+            label_ko=new_label_ko,
+            label_en=new_label_en,
             is_object="obj" in checkbox_array,
             is_array="array" in checkbox_array,
             is_object_array="objarray" in checkbox_array)

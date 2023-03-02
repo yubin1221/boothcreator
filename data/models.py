@@ -1,3 +1,5 @@
+import uuid
+
 from django.db import models
 
 
@@ -9,11 +11,10 @@ class Data(models.Model):
         ('number', 'number'),
         ('boolean', 'boolean')
     ]
-    id = models.CharField(max_length=36, primary_key=True)
+    id = models.CharField(max_length=36, primary_key=True, default=uuid.uuid4())
     name = models.CharField(max_length=50)
     primitive = models.CharField(max_length=7, choices=DATA_TYPE)
-    label_ko = models.CharField(max_length=50)
-    label_en = models.CharField(max_length=50)
+
     is_category = models.BooleanField()
     has_length_limit = models.BooleanField(null=True)
     has_range_limit = models.BooleanField(null=True)

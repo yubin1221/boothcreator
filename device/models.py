@@ -1,8 +1,10 @@
+import uuid
+
 from django.db import models
 
 # Create your models here.
 class Device(models.Model):
-    id = models.CharField(max_length= 36, primary_key= True)
+    id = models.CharField(max_length= 36, primary_key= True, default=uuid.uuid4())
     name = models.CharField(max_length=50)
     vendor = models.CharField(max_length=50)
     version = models.CharField(max_length=36)

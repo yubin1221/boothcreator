@@ -1,10 +1,14 @@
+import uuid
+
 from django.db import models
 
 
 # Create your models here.
 class Capability(models.Model):
-    id = models.CharField(max_length=36, primary_key=True)
+    id = models.CharField(max_length=36, primary_key=True, default=uuid.uuid4())
     key = models.CharField(max_length=50)
+    label_ko = models.CharField(max_length=50)
+    label_en = models.CharField(max_length=50)
     super_permission = models.IntegerField()
     user_permission = models.IntegerField()
     is_object = models.BooleanField()
